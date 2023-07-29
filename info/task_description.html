@@ -1,0 +1,61 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    You are standing at the point <b>(x, y)</b> in the <i>lattice</i> grid of pairs of non-negative numbers, and wish to make your way to the origin point <b>(0, 0)</b>. At any point, you are allowed to move either one step left or one step down. Furthermore, you are never allowed to step into any of the points in the <b>tabu</b> list (origin is never in <b>tabu</b>). This function should add up the number of different paths that lead from the point <b>(x,y)</b> to the origin <b>(0,0)</b> under these constraints. 
+</p>
+<p><i>
+    If you feel yourself in need of a hint, here are two ideas of solving (click on a hint):
+</i></p>
+
+<details>
+    <summary><i>Hint 1</i></summary>
+    <p><i>
+        This constrained variation of the classic combinatorial problem turns out to  have a reasonably straightforward recursive solution. As the base case, the number of paths from the origin <b>(0, 0)</b> to itself equals one for the empty path (note the crucial difference between an empty path that exists, versus a nonexistent path!). If the point <b>(x, y)</b> is in the <b>tabu</b> list, the number of paths from that point to the origin equals zero. Otherwise, the number of paths from the point to the origin equals the sum of paths from the two neighbors (x-1, y) and (x, y-1). However, this simple recursion branches into an exponential number of possibilities and may therefore  be  far too slow to execute. Therefore, you should either memoize the recursion with <b>lru_cache</b>, or even better... 
+    </i></p>
+</details>
+
+<details>
+    <summary><p><i>Hint 2</i></p></summary>
+    <p><i>
+        Do not use recursion at all but build up a two-dimensional list whose entries are the individual subproblem solutions. Fill in the correct values with two for-loops in some order that guarantees that when these loops arrive at position [x][y], the results for positions [x-1][y] and [x][y-1] needed to compute [x][y] are already there.
+    </i></p>
+</details>
+
+<!-- <p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p> -->
+
+<!-- Explain input and output values -->
+<p>
+    <strong>Input:</strong> <b>position</b> as <span translate="repeat">{% if is_js %}array{% else %}tuple{% endif %}</span> of two integers <span translate="no">({% if is_js %}number{% else %}int{% endif %})</span> and <b>tabu</b> as <span translate="repeat">{% if is_js %}array{% else %}list{% endif %}</span> of positions.
+</p>
+
+<p>
+    <strong>Output:</strong> Integer <span translate="no">({% if is_js %}number{% else %}int{% endif %})</span>. 
+</p>
+
+
+<p>
+    <strong>Examples:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>This technique of using for-loops to fill out the memoization tables instead of using a recursive formula is called dynamic programming.</i>
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<p>
+    <strong>Precondition:</strong>
+    <ul>
+    <li><i>x >= 0 and y >= 0</i>.</li>
+    </ul>
+</p>
+
+<p><i>The mission was taken from <span translate="no">Python CCPS 109</span>. It is taught for <span translate="no">Ryerson Chang School of Continuing Education</span> by <a href="https://github.com/ikokkari">Ilkka Kokkarinen</a></i></p>
