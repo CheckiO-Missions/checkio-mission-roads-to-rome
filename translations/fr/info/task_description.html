@@ -1,0 +1,61 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    Vous vous trouvez au point <b>(x, y)</b> de la <i>grille</i> de paires de nombres non négatifs et vous souhaitez vous rendre au point d'origine <b>(0, 0)</b>. À tout moment, vous êtes autorisé à vous déplacer d'un pas vers la gauche ou d'un pas vers le bas. En outre, vous n'êtes jamais autorisé à entrer dans l'un des points de la liste <b>tabu</b> (l'origine n'est jamais dans <b>tabu</b>). Cette fonction doit additionner le nombre de chemins différents qui mènent du point <b>(x,y)</b> à l'origine <b>(0,0)</b> sous ces contraintes. 
+</p>
+<p><i>
+    Si vous avez besoin d'un indice, voici deux idées de résolution (cliquez sur un indice):
+</i></p>
+
+<details>
+    <summary><i>Indice 1</i></summary>
+    <p><i>
+        Cette variante contrainte du problème combinatoire classique a une solution récursive raisonnablement simple. Dans le cas de base, le nombre de chemins allant de l'origine <b>(0, 0)</b> à elle-même est égal à un pour le chemin vide (notez la différence cruciale entre un chemin vide qui existe et un chemin inexistant!) Si le point <b>(x, y)</b> figure dans la liste <b>tabu</b>, le nombre de chemins de ce point à l'origine est égal à zéro. Sinon, le nombre de chemins du point à l'origine est égal à la somme des chemins des deux voisins (x-1, y) et (x, y-1). Cependant, cette simple récursion se ramifie en un nombre exponentiel de possibilités et peut donc être beaucoup trop lente à exécuter. Par conséquent, vous devriez soit mémoriser la récursion à l'aide de <b>lru_cache</b>, ou mieux encore... 
+    </i></p>
+</details>
+
+<details>
+    <summary><p><i>Conseil 2</i></p></summary>
+    <p><i>
+        N'utilisez pas du tout la récursivité mais construisez une liste à deux dimensions dont les entrées sont les solutions individuelles des sous-problèmes. Remplissez les valeurs correctes avec deux boucles for dans un ordre qui garantit que lorsque ces boucles arrivent à la position [x][y], les résultats pour les positions [x-1][y] et [x][y-1] nécessaires pour calculer [x][y] s'y trouvent déjà.
+    </i></p>
+</details>
+
+<!-- <p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p> -->
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Entrée:</strong> <b>position</b> as {% if is_js %}array{% else %}tuple{% endif %} <span>({% if is_js %}array{% else %}tuple{% endif %})</span> de deux entiers <span>({% if is_js %}number{% else %}int{% endif %})</span> et <b>tabu</b> comme {% if is_js %}tableau{% else %}liste{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span> de positions.
+</p>
+
+<p>
+   <strong>Sortie:</strong> Entier <span>({% if is_js %}number{% else %}int{% endif %})</span>. 
+</p>
+
+
+<p>
+    <strong>Exemples:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>This technique of using for-loops to fill out the memoization tables instead of using a recursive formula is called dynamic programming.</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<p>
+    <strong>Condition préalable:</strong>
+    <ul>
+    <li><i>x &gt;= 0 et y &gt;= 0</i>.</li>
+    </ul>
+</p>
+
+<p><i>La mission est tirée de <span>Python CCPS 109</span>. Elle est enseignée pour <span>Ryerson Chang School of Continuing Education</span> par <a href="https://github.com/ikokkari">Ilkka Kokkarinen</a></i></p>
