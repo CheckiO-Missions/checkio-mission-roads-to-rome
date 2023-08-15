@@ -1,0 +1,61 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    Stoi Pan(i) w punkcie <b>(x, y)</b> w <i>siatce</i> par liczb nieujemnych i chce Pan(i) dotrzeć do punktu początkowego <b>(0, 0)</b>. W każdym punkcie może Pan/Pani wykonać jeden krok w lewo lub jeden krok w dół. Co więcej, nigdy nie można przejść do żadnego z punktów na liście <b>tabu</b> (punkt początkowy nigdy nie znajduje się w <b>tabu</b>). Ta funkcja powinna zsumować liczbę różnych ścieżek, które prowadzą z punktu <b>(x,y)</b> do punktu początkowego <b>(0,0)</b> przy tych ograniczeniach. 
+</p>
+<p><i>
+    Jeśli potrzebują Państwo podpowiedzi, oto dwa pomysły rozwiązania (proszę kliknąć na podpowiedź):
+</i></p>
+
+<details>
+    <summary><i>Podpowiedź 1</i></summary>
+    <p><i>
+        Ta ograniczona odmiana klasycznego problemu kombinatorycznego okazuje się mieć dość proste rozwiązanie rekurencyjne. Jako przypadek bazowy, liczba ścieżek z punktu początkowego <b>(0, 0)</b> do samego siebie jest równa jeden dla pustej ścieżki (proszę zauważyć zasadniczą różnicę między pustą ścieżką, która istnieje, a nieistniejącą ścieżką!). Jeśli punkt <b>(x, y)</b> znajduje się na liście <b>tabu</b>, liczba ścieżek od tego punktu do początku jest równa zero. W przeciwnym razie liczba ścieżek od punktu do początku jest równa sumie ścieżek od dwóch sąsiadów (x-1, y) i (x, y-1). Jednak ta prosta rekurencja rozgałęzia się na wykładniczą liczbę możliwości i dlatego może być zbyt wolna do wykonania. Dlatego proszę albo zapamiętać rekurencję za pomocą <b>lru_cache</b>, albo jeszcze lepiej... 
+    </i></p>
+</details>
+
+<details>
+    <summary><p><i>Wskazówka 2</i></p></summary>
+    <p><i>
+        Proszę w ogóle nie używać rekurencji, ale utworzyć dwuwymiarową listę, której wpisy są rozwiązaniami poszczególnych podproblemów. Proszę wypełnić prawidłowe wartości dwiema pętlami for w kolejności gwarantującej, że gdy pętle te dotrą do pozycji [x][y], wyniki dla pozycji [x-1][y] i [x][y-1] potrzebne do obliczenia [x][y] już tam są.
+    </i></p>
+</details>
+
+<!-- <p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p> -->
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Wejście:</strong> <b>position</b> jako {% if is_js %}tablica{% else %}krotka{% endif %} <span>({% if is_js %}array{% else %}tuple{% endif %})</span> dwóch liczb całkowitych <span>({% if is_js %}number{% else %}int{% endif %})</span> oraz <b>tabu</b> jako {% if is_js %}tablica{% else %}lista{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span> pozycji.
+</p>
+
+<p>
+   <strong>Dane wyjściowe:</strong> Liczba całkowita <span>({% if is_js %}number{% else %}int{% endif %})</span>. 
+</p>
+
+
+<p>
+    <strong>Przykłady:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>This technique of using for-loops to fill out the memoization tables instead of using a recursive formula is called dynamic programming.</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<p>
+    <strong>Warunek wstępny:</strong>
+    <ul>
+    <li><i>x &gt;= 0 i y &gt;= 0</i>.</li>
+    </ul>
+</p>
+
+<p><i>Misja została zaczerpnięta z <span>Python CCPS 109</span>. Jest ona nauczana dla <span>Ryerson Chang School of Continuing Education</span> przez <a href="https://github.com/ikokkari">Ilkka Kokkarinen</a></i></p>
