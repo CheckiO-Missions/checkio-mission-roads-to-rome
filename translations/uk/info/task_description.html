@@ -1,0 +1,61 @@
+<!-- Describe task in general -->
+
+<p style="text-align: justify;">
+    Ви стоїте у точці <b>(x, y)</b> на <i>решітці</i> з пар невід'ємних чисел і хочете дістатись до початкової точки <b>(0, 0)</b>. У довільний момент вам дозволено зробити один крок ліворуч або один крок вниз. Крім того, вам ніколи не дозволяється вступати у жодну з точок списку <b>tabu</b> (початок координат ніколи не знаходиться у точці <b>tabu</b>). Ця функція повинна підрахувати кількість різних шляхів, які ведуть з точки <b>(x,y)</b> в початок координат <b>(0,0)</b> при цих обмеженнях. 
+</p>
+<p><i>
+    Якщо ви відчуваєте, що вам потрібна підказка, ось дві ідеї розв'язання (натисніть на підказку):
+</i></p>
+
+<details>
+    <summary><i>Підказка 1</i></summary>
+    <p><i>
+        Ця обмежена варіація класичної комбінаторної задачі має досить простий рекурсивний розв'язок. У базовому випадку кількість шляхів з початку координат <b>(0, 0)</b> до самого себе дорівнює одиниці для порожнього шляху (зверніть увагу на принципову різницю між порожнім шляхом, який існує, та неіснуючим шляхом!). Якщо точка <b>(x, y)</b> є у списку <b>tabu</b>, то кількість шляхів з цієї точки до початку координат дорівнює нулю. В іншому випадку, кількість шляхів з точки до початку координат дорівнює сумі шляхів з двох сусідніх точок (x-1, y) та (x, y-1). Однак ця проста рекурсія розгалужується на експоненціальну кількість можливостей і тому може бути надто повільною для виконання. Тому вам слід або запам'ятати рекурсію за допомогою <b>lru_cache</b>, або ще краще... 
+    </i></p>
+</details>
+
+<details>
+    <summary><p><i>Підказка 2</i></p></summary>
+    <p><i>
+        Не використовуйте рекурсію взагалі, а створіть двовимірний список, елементи якого є розв'язками окремих підзадач. Заповніть правильні значення двома циклами for у певному порядку, який гарантує, що коли ці цикли дійдуть до позиції [x][y], результати для позицій [x-1][y] і [x][y-1], необхідні для обчислення [x][y], вже будуть там.
+    </i></p>
+</details>
+
+<!-- <p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p> -->
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Вхідні дані:</strong> <b>position</b> у вигляді {% if is_js %}масиву{% else %}кортежу{% endif %} <span>({% if is_js %}array{% else %}tuple{% endif %})</span> з двох цілих чисел <span>({% if is_js %}number{% else %}int{% endif %})</span> та <b>tabu</b> у вигляді масиву {% if is_js %}масив{% else %}список{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span> позицій.
+</p>
+
+<p>
+   <strong>Вивести:</strong> Ціле число <span>({% if is_js %}number{% else %}int{% endif %})</span>. 
+</p>
+
+
+<p>
+    <strong>Приклади:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>This technique of using for-loops to fill out the memoization tables instead of using a recursive formula is called dynamic programming.</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<p>
+    <strong>Передумова:</strong>
+    <ul>
+    <li><i>x &gt;= 0 та y &gt;= 0</i>.</li>
+    </ul>
+</p>
+
+<p><i>Задачу взято з сайту <span>Python CCPS 109</span>. Її розв'язано для <span>Ryerson Chang School of Continuing Education</span> за допомогою <a href="https://github.com/ikokkari">Ilkka Kokkarinen</a></i></p>
