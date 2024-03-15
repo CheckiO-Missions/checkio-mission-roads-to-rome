@@ -1,0 +1,63 @@
+<!-- Describe task in general -->
+
+<img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+
+<p style="text-align: justify;">
+    Sie stehen an dem Punkt <b>(x, y)</b> im <i>Gitter</i> aus Paaren nichtnegativer Zahlen und möchten sich zum Ausgangspunkt <b>(0, 0)</b> begeben. An jedem Punkt dürfen Sie entweder einen Schritt nach links oder einen Schritt nach unten gehen. Außerdem dürfen Sie nie einen der Punkte in der Liste <b>tabu</b> betreten (der Ursprung liegt nie in <b>tabu</b>). Diese Funktion soll die Anzahl der verschiedenen Wege addieren, die unter diesen Einschränkungen vom Punkt <b>(x,y)</b> zum Ursprung <b>(0,0)</b> führen. 
+</p>
+<p><i>
+    Wenn Sie einen Tipp brauchen, finden Sie hier zwei Lösungsvorschläge (klicken Sie auf einen Tipp):
+</i></p>
+
+<details>
+    <summary><i>Tipp 1</i></summary>
+    <p><i>
+        Für diese eingeschränkte Variante des klassischen kombinatorischen Problems gibt es eine recht einfache rekursive Lösung. Als Basisfall ist die Anzahl der Wege vom Ursprung <b>(0, 0)</b> zu sich selbst gleich eins für den leeren Weg (beachten Sie den entscheidenden Unterschied zwischen einem leeren Weg, der existiert, und einem nicht existierenden Weg!) Wenn der Punkt <b>(x, y)</b> in der Liste <b>tabu</b> enthalten ist, ist die Anzahl der Pfade von diesem Punkt zum Ursprung gleich Null. Andernfalls ist die Anzahl der Pfade von diesem Punkt zum Ursprung gleich der Summe der Pfade von den beiden Nachbarn (x-1, y) und (x, y-1). Diese einfache Rekursion verzweigt jedoch in eine exponentielle Anzahl von Möglichkeiten und ist daher möglicherweise viel zu langsam in der Ausführung. Daher sollten Sie die Rekursion entweder mit <b>lru_cache</b> memoisieren, oder noch besser... 
+    </i></p>
+</details>
+
+<details>
+    <summary><p><i>Tipp 2</i></p></summary>
+    <p><i>
+        Verwenden Sie keine Rekursion, sondern bauen Sie eine zweidimensionale Liste auf, deren Einträge die einzelnen Teilproblemlösungen sind. Füllen Sie die richtigen Werte mit zwei for-Schleifen in einer Reihenfolge aus, die garantiert, dass, wenn diese Schleifen an der Position [x][y] ankommen, die Ergebnisse für die Positionen [x-1][y] und [x][y-1], die zur Berechnung von [x][y] benötigt werden, bereits vorhanden sind.
+    </i></p>
+</details>
+
+<!-- <p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p> -->
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Eingabe:</strong> <b>position</b> als {% if is_js %}Array{% else %}Tupel{% endif %} <span>({% if is_js %}array{% else %}tuple{% endif %})</span> aus zwei ganzen Zahlen <span>({% if is_js %}number{% else %}int{% endif %})</span> und <b>tabu</b> als {% if is_js %}Array{% else %}Liste{% endif %} <span>({% if is_js %}array{% else %}list{% endif %})</span> von Positionen.
+</p>
+
+<p>
+   <strong>Ausgabe:</strong> Ganzzahl <span>({% if is_js %}number{% else %}int{% endif %})</span>. 
+</p>
+
+
+<p>
+    <strong>Beispiele:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">{{init_code_tmpl}}</pre>
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<!-- <p class="for_info_only">
+
+    <strong>How it’s used:</strong>
+    <i>This technique of using for-loops to fill out the memoization tables instead of using a recursive formula is called dynamic programming.</i>
+</p> -->
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<p>
+    <strong>Vorbedingung:</strong>
+    <ul>
+    <li><i>x &gt;= 0 und y &gt;= 0</i>.</li>
+    </ul>
+</p>
+
+<p><i>Die Aufgabe wurde von <span>Python CCPS 109</span> übernommen. Sie wird für <span>Ryerson Chang School of Continuing Education</span> gelehrt von <a href="https://github.com/ikokkari">Ilkka Kokkarinen</a></i></p>
