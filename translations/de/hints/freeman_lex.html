@@ -1,0 +1,31 @@
+
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Ich habe keine Ahnung, wie ich mit der Lösung dieser Aufgabe beginnen soll.
+    </div>
+    <div class="answer">
+        <p>
+            Fangen Sie die erste Idee💡! Für diese eingeschränkte Variante des klassischen kombinatorischen Problems gibt es eine recht einfache rekursive Lösung. Als Basisfall ist die Anzahl der Pfade vom Ursprung <b>(0, 0)</b> zu sich selbst gleich eins für den leeren Pfad (beachten Sie den entscheidenden Unterschied zwischen einem leeren Pfad, der existiert, und einem nicht existierenden Pfad!) Wenn der Punkt <b>(x, y)</b> in der Liste <b>tabu</b> enthalten ist, ist die Anzahl der Pfade von diesem Punkt zum Ursprung gleich Null. Andernfalls ist die Anzahl der Pfade von diesem Punkt zum Ursprung gleich der Summe der Pfade von den beiden Nachbarn (x-1, y) und (x, y-1). Diese einfache Rekursion verzweigt jedoch in eine exponentielle Anzahl von Möglichkeiten und ist daher möglicherweise viel zu langsam in der Ausführung. Daher sollten Sie die Rekursion entweder mit <b>lru_cache</b> memoisieren, oder noch besser...
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Dieser Weg ist für mich schwierig. Haben Sie eine andere Idee?
+    </div>
+    <div class="answer">
+        <p>
+            Ja, hier ist eine andere. Verwenden Sie keine Rekursion, sondern bauen Sie eine zweidimensionale Liste auf, deren Einträge die einzelnen Lösungen der Teilprobleme sind. Füllen Sie die richtigen Werte mit zwei for-Schleifen in einer Reihenfolge aus, die garantiert, dass, wenn diese Schleifen an der Position [x][y] ankommen, die Ergebnisse für die Positionen [x-1][y] und [x][y-1], die zur Berechnung von [x][y] benötigt werden, bereits vorhanden sind.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Danke! Ich weiß und verstehe jetzt mehr! Alles funktioniert einwandfrei!
+    </div>
+    <div class="answer">
+        Freut mich zu hören 👍!
+    </div>
+</div>
+</body>
