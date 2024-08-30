@@ -1,0 +1,31 @@
+
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        我不知道如何开始解决这个任务。
+    </div>
+    <div class="answer">
+        <p>
+            抓住第一个想法💡！这个经典组合问题的受限变体有一个相当简单的递归解。作为基本情况，从原点<b>(0, 0)</b> 到自身的路径数等于空路径的 1（注意存在的空路径和不存在的路径之间的关键区别！）。如果点<b>(x, y)</b> 在<b>tabu</b> 列表中，则从该点到原点的路径数等于零。否则，从该点到原点的路径数等于两个相邻点 (x-1, y) 和 (x, y-1) 的路径之和。然而，这种简单的递归分支会产生指数级的可能性，因此执行起来可能会过于缓慢。因此，您应该使用<b>lru_cache</b> 对递归进行记忆，或者更好的方法是...
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        这条路对我来说很困难。你有其他办法吗？
+    </div>
+    <div class="answer">
+        <p>
+            有，还有一个。完全不要使用递归，而是建立一个二维列表，其中的条目就是各个子问题的解。用两个 for 循环按照一定的顺序填入正确的值，保证当这些循环到达 [x][y] 位置时，计算 [x][y] 所需的 [x-1][y] 和 [x][y-1] 位置的结果已经在那里了。
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        谢谢！我现在知道并理解得更多了！一切正常！
+    </div>
+    <div class="answer">
+        很高兴听到这个消息 👍！
+    </div>
+</div>
+</body>
