@@ -1,0 +1,31 @@
+
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Je n'ai aucune idée de la manière de commencer à résoudre cette mission.
+    </div>
+    <div class="answer">
+        <p>
+            Attrapez la première idée💡! Cette variante contrainte du problème combinatoire classique s'avère avoir une solution récursive raisonnablement simple. Dans le cas de base, le nombre de chemins de l'origine <b>(0, 0)</b> à elle-même est égal à un pour le chemin vide (notez la différence cruciale entre un chemin vide qui existe, et un chemin inexistant!). Si le point <b>(x, y)</b> figure dans la liste <b>tabu</b>, le nombre de chemins de ce point à l'origine est égal à zéro. Sinon, le nombre de chemins du point à l'origine est égal à la somme des chemins des deux voisins (x-1, y) et (x, y-1). Cependant, cette simple récursion se ramifie en un nombre exponentiel de possibilités et peut donc être beaucoup trop lente à exécuter. Par conséquent, vous devriez soit mémoriser la récursion à l'aide de <b>lru_cache</b>, ou mieux encore...
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Cette voie est difficile pour moi. Avez-vous une autre idée?
+    </div>
+    <div class="answer">
+        <p>
+            Oui, en voici une autre. N'utilisez pas du tout la récursivité, mais construisez une liste à deux dimensions dont les entrées sont les solutions individuelles des sous-problèmes. Remplissez les valeurs correctes avec deux boucles for dans un ordre qui garantit que lorsque ces boucles arrivent à la position [x][y], les résultats pour les positions [x-1][y] et [x][y-1] nécessaires pour calculer [x][y] s'y trouvent déjà.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Je vous remercie! J'en sais plus et je comprends mieux maintenant! Tout fonctionne bien!
+    </div>
+    <div class="answer">
+        Heureux de l'apprendre 👍!
+    </div>
+</div>
+</body>
