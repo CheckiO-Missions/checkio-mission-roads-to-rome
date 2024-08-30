@@ -9,20 +9,6 @@
     If you feel yourself in need of a hint, here are two ideas of solving (click on a hint):
 </i></p>
 
-<details>
-    <summary><i>Hint 1</i></summary>
-    <p><i>
-        This constrained variation of the classic combinatorial problem turns out to  have a reasonably straightforward recursive solution. As the base case, the number of paths from the origin <b>(0, 0)</b> to itself equals one for the empty path (note the crucial difference between an empty path that exists, versus a nonexistent path!). If the point <b>(x, y)</b> is in the <b>tabu</b> list, the number of paths from that point to the origin equals zero. Otherwise, the number of paths from the point to the origin equals the sum of paths from the two neighbors (x-1, y) and (x, y-1). However, this simple recursion branches into an exponential number of possibilities and may therefore  be  far too slow to execute. Therefore, you should either memoize the recursion with <b>lru_cache</b>, or even better... 
-    </i></p>
-</details>
-
-<details>
-    <summary><p><i>Hint 2</i></p></summary>
-    <p><i>
-        Do not use recursion at all but build up a two-dimensional list whose entries are the individual subproblem solutions. Fill in the correct values with two for-loops in some order that guarantees that when these loops arrive at position [x][y], the results for positions [x-1][y] and [x][y-1] needed to compute [x][y] are already there.
-    </i></p>
-</details>
-
 <!-- <p style="text-align: center;">
     <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
 </p> -->
