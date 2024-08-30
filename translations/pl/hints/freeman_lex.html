@@ -1,0 +1,31 @@
+
+<body data-author="freeman_lex">
+<div class="question-answer">
+    <div class="question">
+        Nie mam pojęcia, jak zacząć rozwiązywać tę misję.
+    </div>
+    <div class="answer">
+        <p>
+            Proszę złapać pierwszy pomysł💡! Ta ograniczona odmiana klasycznego problemu kombinatorycznego okazuje się mieć dość proste rozwiązanie rekurencyjne. W podstawowym przypadku liczba ścieżek z punktu początkowego <b>(0, 0)</b> do samego siebie jest równa jeden dla pustej ścieżki (proszę zwrócić uwagę na zasadniczą różnicę między pustą ścieżką, która istnieje, a nieistniejącą ścieżką!). Jeśli punkt <b>(x, y)</b> znajduje się na liście <b>tabu</b>, liczba ścieżek od tego punktu do początku jest równa zero. W przeciwnym razie liczba ścieżek od punktu do początku jest równa sumie ścieżek od dwóch sąsiadów (x-1, y) i (x, y-1). Jednak ta prosta rekurencja rozgałęzia się na wykładniczą liczbę możliwości i dlatego może być zbyt wolna do wykonania. Dlatego proszę albo zapamiętać rekurencję za pomocą <b>lru_cache</b>, albo jeszcze lepiej...
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Ta ścieżka jest dla mnie trudna. Czy ma Pan jakiś inny pomysł?
+    </div>
+    <div class="answer">
+        <p>
+            Tak, oto kolejny. Proszę w ogóle nie używać rekurencji, tylko zbudować dwuwymiarową listę, której wpisy są rozwiązaniami poszczególnych podproblemów. Proszę wypełnić odpowiednie wartości dwiema pętlami for w kolejności gwarantującej, że gdy pętle te dotrą do pozycji [x][y], wyniki dla pozycji [x-1][y] i [x][y-1] potrzebne do obliczenia [x][y] już tam są.
+        </p>
+    </div>
+</div>
+<div class="question-answer">
+    <div class="question">
+        Dzięki! Teraz wiem i rozumiem więcej! Wszystko działa dobrze!
+    </div>
+    <div class="answer">
+        Miło mi to słyszeć 👍!
+    </div>
+</div>
+</body>
